@@ -31,7 +31,7 @@ public class SimpleLinkedList {
     }
 
     public String get(int index) {
-        if (index >= size()) {
+        if (index >= size() || index < 0) {
             throw new ArrayIndexOutOfBoundsException("Don't be fool, man!");
         }
         Node tmp = head;
@@ -44,10 +44,11 @@ public class SimpleLinkedList {
     public void remove(int index) {
         Node tmp1 = head;
         Node tmp2 = head;
-        if (index >= size()) {
+        int size = size();
+        if (index >= size || index < 0) {
             throw new ArrayIndexOutOfBoundsException("Don't be fool, man!");
         }
-        if (size() == 1) {
+        if (size == 1) {
             head = null;
             tail = null;
         } else {
@@ -60,7 +61,7 @@ public class SimpleLinkedList {
             if (index == 0) {
                 head = tmp2;
             }
-            if (index + 1 == size()) {
+            if (index + 1 == size) {
                 tail = tmp1;
             } else {
                 tmp1.setNext(tmp2);
