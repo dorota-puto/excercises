@@ -4,19 +4,13 @@ public class SllTest {
     public static void main(String[] args) {
         SimpleLinkedList simpleLinkedList = new SimpleLinkedList();
         System.out.println("size = " + simpleLinkedList.size());
-        simpleLinkedList.add("ala"); // 0
-        System.out.println("size = " + simpleLinkedList.size());
-       // simpleLinkedList.add("ola"); // 1
-       // System.out.println("size = " + simpleLinkedList.size());
-       // simpleLinkedList.add("ela"); // 2
-      //  simpleLinkedList.add("bartek"); // 3
-      //  System.out.println("size = " + simpleLinkedList.size());
-      //  simpleLinkedList.add("ula"); // 4
-      //  System.out.println("size = " + simpleLinkedList.size());
+        simpleLinkedList.add("kotek"); // 0
+        simpleLinkedList.add("piesek"); // 0
+        simpleLinkedList.add("jeżyk"); // 0
+        simpleLinkedList.add("muszka"); // 0
+        simpleLinkedList.add("krecik"); // 0
 
-
-       simpleLinkedList.remove(0);
-        System.out.println("size = " + simpleLinkedList.size());
+System.out.println(simpleLinkedList);
 
      //   System.out.println(simpleLinkedList.get(0));
      //   System.out.println(simpleLinkedList.get(1));

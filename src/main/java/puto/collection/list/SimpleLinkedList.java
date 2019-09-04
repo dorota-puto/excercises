@@ -68,5 +68,20 @@ public class SimpleLinkedList {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        if (head == null) {
+            return "";
+        }
+        String result = "";
+        Node tmp = head;
+        while (tmp != tail) {
+            result = result + "("+tmp.getValue()+")--->";
+            tmp = tmp.getNext();
+        }
+        result = result + "("+tmp.getValue()+")--->";
+        return result;
+    }
 }
 
