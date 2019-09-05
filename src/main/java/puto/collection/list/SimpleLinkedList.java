@@ -1,5 +1,7 @@
 package puto.collection.list;
 
+import puto.collection.filters.IFilter;
+
 public class SimpleLinkedList {
     private Node head;
     private Node tail;
@@ -77,11 +79,23 @@ public class SimpleLinkedList {
         String result = "";
         Node tmp = head;
         while (tmp != tail) {
-            result = result + "("+tmp.getValue()+")--->";
+            result = result + "(" + tmp.getValue() + ")--->";
             tmp = tmp.getNext();
         }
-        result = result + "("+tmp.getValue()+")--->";
+        result = result + "(" + tmp.getValue() + ")--->";
         return result;
+    }
+
+    public SimpleLinkedList filterList(IFilter filter) {
+        Node tmp = head;
+        SimpleLinkedList filteredList = new SimpleLinkedList();
+        while (tmp != null) {
+            if (filter.isIncluded(tmp.getValue())) {
+                filteredList.add(tmp.getValue());
+            }
+            tmp = tmp.getNext();
+        }
+        return filteredList;
     }
 }
 
