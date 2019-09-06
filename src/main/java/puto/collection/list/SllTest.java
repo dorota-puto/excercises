@@ -1,10 +1,11 @@
 package puto.collection.list;
 
+import puto.collection.filters.IFilter;
 import puto.collection.filters.MinimumLengthFilter;
 
 public class SllTest {
     public static void main(String[] args) {
-        SimpleLinkedList simpleLinkedList = new SimpleLinkedList();
+        SimpleLinkedList<String> simpleLinkedList = new SimpleLinkedList<>();
         System.out.println("size = " + simpleLinkedList.size());
         simpleLinkedList.add("kotek"); // 0
         simpleLinkedList.add("piesek"); // 0
@@ -16,8 +17,16 @@ public class SllTest {
 
         System.out.println(simpleLinkedList);
 
-        System.out.println(simpleLinkedList.filterList(new MinimumLengthFilter(3)));
+        SimpleLinkedList filteredList = simpleLinkedList.filterList(new MinimumLengthFilter(3));
+        System.out.println(filteredList);
 
+        SimpleLinkedList listFilteredByPLetter = simpleLinkedList.filterList(new IFilter<String>() {
+            @Override
+            public boolean isIncluded(String value) {
+                return value.startsWith("p");
+            }
+        });
+        System.out.println(listFilteredByPLetter);
 
         //   System.out.println(simpleLinkedList.get(0));
         //   System.out.println(simpleLinkedList.get(1));

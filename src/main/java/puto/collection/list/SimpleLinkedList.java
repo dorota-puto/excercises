@@ -2,17 +2,17 @@ package puto.collection.list;
 
 import puto.collection.filters.IFilter;
 
-public class SimpleLinkedList {
-    private Node head;
-    private Node tail;
+public class SimpleLinkedList<T> {
+    private Node<T> head;
+    private Node<T> tail;
 
-    public void add(String value) {
+    public void add(T value) {
         if (head == null) {
-            head = new Node();
+            head = new Node<>();
             tail = head;
             head.setValue(value);
         } else {
-            Node tmp = new Node();
+            Node<T> tmp = new Node<>();
             tail.setNext(tmp);
             tail = tmp;
             tmp.setValue(value);
@@ -23,7 +23,7 @@ public class SimpleLinkedList {
         if (head == null) {
             return 0;
         }
-        Node tmp = head;
+        Node<T> tmp = head;
         int counter = 1;
         while (tmp != tail) {
             counter++;
@@ -32,11 +32,11 @@ public class SimpleLinkedList {
         return counter;
     }
 
-    public String get(int index) {
+    public T get(int index) {
         if (index >= size() || index < 0) {
             throw new ArrayIndexOutOfBoundsException("Don't be fool, man!");
         }
-        Node tmp = head;
+        Node<T> tmp = head;
         for (int i = 0; i < index; i++) {
             tmp = tmp.getNext();
         }
@@ -44,8 +44,8 @@ public class SimpleLinkedList {
     }
 
     public void remove(int index) {
-        Node tmp1 = head;
-        Node tmp2 = head;
+        Node<T> tmp1 = head;
+        Node<T> tmp2 = head;
         int size = size();
         if (index >= size || index < 0) {
             throw new ArrayIndexOutOfBoundsException("Don't be fool, man!");
@@ -77,18 +77,17 @@ public class SimpleLinkedList {
             return "";
         }
         String result = "";
-        Node tmp = head;
-        while (tmp != tail) {
+        Node<T> tmp = head;
+        while (tmp != null) {
             result = result + "(" + tmp.getValue() + ")--->";
             tmp = tmp.getNext();
         }
-        result = result + "(" + tmp.getValue() + ")--->";
         return result;
     }
 
-    public SimpleLinkedList filterList(IFilter filter) {
-        Node tmp = head;
-        SimpleLinkedList filteredList = new SimpleLinkedList();
+    public SimpleLinkedList<T> filterList(IFilter<T> filter) {
+        Node<T> tmp = head;
+        SimpleLinkedList<T> filteredList = new SimpleLinkedList<>();
         while (tmp != null) {
             if (filter.isIncluded(tmp.getValue())) {
                 filteredList.add(tmp.getValue());

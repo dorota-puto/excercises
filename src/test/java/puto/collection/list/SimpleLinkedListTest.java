@@ -8,7 +8,7 @@ public class SimpleLinkedListTest {
     @Test
     public void testRemovingFromOneElementList() {
         //given
-        SimpleLinkedList simpleLinkedList = new SimpleLinkedList();
+        SimpleLinkedList<String> simpleLinkedList = new SimpleLinkedList<>() ;
         simpleLinkedList.add("kotek");
 
         //when
@@ -21,7 +21,7 @@ public class SimpleLinkedListTest {
     @Test
     public void testRemovingHeadFromTwoElementList() {
         //given
-        SimpleLinkedList simpleLinkedList = new SimpleLinkedList();
+        SimpleLinkedList<String> simpleLinkedList = new SimpleLinkedList<>() ;
         simpleLinkedList.add("kotek");
         simpleLinkedList.add("piesek");
 
@@ -35,7 +35,7 @@ public class SimpleLinkedListTest {
 
     public void testRemovingTailFromTwoElementList() {
         //given
-        SimpleLinkedList simpleLinkedList = new SimpleLinkedList();
+        SimpleLinkedList<String> simpleLinkedList = new SimpleLinkedList<>() ;
         simpleLinkedList.add("kotek");
         simpleLinkedList.add("piesek");
 
@@ -50,7 +50,7 @@ public class SimpleLinkedListTest {
     @Test
     public void testRemovingHeadFromThreeElementList() {
         //given
-        SimpleLinkedList simpleLinkedList = new SimpleLinkedList();
+        SimpleLinkedList<String> simpleLinkedList = new SimpleLinkedList<>() ;
         simpleLinkedList.add("kotek");
         simpleLinkedList.add("piesek");
         simpleLinkedList.add("myszka");
@@ -67,7 +67,7 @@ public class SimpleLinkedListTest {
     @Test
     public void testRemovingTailFromThreeElementList() {
         //given
-        SimpleLinkedList simpleLinkedList = new SimpleLinkedList();
+        SimpleLinkedList<String> simpleLinkedList = new SimpleLinkedList<>() ;
         simpleLinkedList.add("kotek");
         simpleLinkedList.add("piesek");
         simpleLinkedList.add("myszka");
@@ -84,7 +84,7 @@ public class SimpleLinkedListTest {
     @Test
     public void testRemovingMiddleElementFromThreeElementList() {
         //given
-        SimpleLinkedList simpleLinkedList = new SimpleLinkedList();
+        SimpleLinkedList<String> simpleLinkedList = new SimpleLinkedList<>() ;
         simpleLinkedList.add("kotek");
         simpleLinkedList.add("piesek");
         simpleLinkedList.add("myszka");
@@ -101,7 +101,7 @@ public class SimpleLinkedListTest {
     @Test
     public void testRemovingFewElementsFromList() {
         //given
-        SimpleLinkedList simpleLinkedList = new SimpleLinkedList();
+        SimpleLinkedList<String> simpleLinkedList = new SimpleLinkedList<>() ;
         simpleLinkedList.add("kotek");
         simpleLinkedList.add("piesek");
         simpleLinkedList.add("myszka");
@@ -122,7 +122,7 @@ public class SimpleLinkedListTest {
     @Test(expectedExceptions = ArrayIndexOutOfBoundsException.class)
     public void testRemovingNotExistingIndex() {
         //given
-        SimpleLinkedList simpleLinkedList = new SimpleLinkedList();
+        SimpleLinkedList<String> simpleLinkedList = new SimpleLinkedList<>() ;
         simpleLinkedList.add("kotek");
         simpleLinkedList.add("piesek");
         simpleLinkedList.add("myszka");
@@ -135,7 +135,7 @@ public class SimpleLinkedListTest {
     @Test(expectedExceptions = ArrayIndexOutOfBoundsException.class)
     public void testRemovingNegitiveIndex() {
         //given
-        SimpleLinkedList simpleLinkedList = new SimpleLinkedList();
+        SimpleLinkedList<String> simpleLinkedList = new SimpleLinkedList<>() ;
         simpleLinkedList.add("kotek");
         simpleLinkedList.add("piesek");
         simpleLinkedList.add("myszka");

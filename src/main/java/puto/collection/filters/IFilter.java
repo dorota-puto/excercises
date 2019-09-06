@@ -1,5 +1,5 @@
 package puto.collection.filters;
 
-public interface IFilter {
-    boolean isIncluded(String value);
+public interface IFilter<T> {
+    boolean isIncluded(T value);
 }

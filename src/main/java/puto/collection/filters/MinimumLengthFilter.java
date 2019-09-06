@@ -1,6 +1,6 @@
 package puto.collection.filters;
 
-public class MinimumLengthFilter implements IFilter {
+public class MinimumLengthFilter implements IFilter<String> {
 
     private int minimumLength;
 
