@@ -96,5 +96,17 @@ public class SimpleLinkedList<T> {
         }
         return filteredList;
     }
+    public int firstIndexOf(T value){
+        Node<T> tmp = head;
+        int counter=0;
+        while (tmp != null) {
+            if (value.equals(tmp.getValue())) {
+               return counter;
+            }
+            tmp = tmp.getNext();
+            counter++;
+        }
+        return -1;
+    }
 }
 

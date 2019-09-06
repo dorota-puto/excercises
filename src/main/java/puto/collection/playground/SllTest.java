@@ -1,10 +1,38 @@
-package puto.collection.list;
+package puto.collection.playground;
 
 import puto.collection.filters.IFilter;
 import puto.collection.filters.MinimumLengthFilter;
+import puto.collection.list.SimpleLinkedList;
+import puto.collection.model.Animal;
 
 public class SllTest {
     public static void main(String[] args) {
+        //testSimpleLinkedListOnStrings();
+        testSimpleLinkedListOnAnimals();
+    }
+
+    private static void testSimpleLinkedListOnAnimals() {
+        SimpleLinkedList<Animal> animals = new SimpleLinkedList<>();
+        animals.add(new Animal("burek", 99));
+        animals.add(new Animal("ciapek", 9));
+        animals.add(new Animal("azor", 24));
+        animals.add(new Animal("lessi", 3));
+        animals.add(new Animal("szarus", 5));
+
+        System.out.println(animals);
+        System.out.println("first index  is " + animals.firstIndexOf(new Animal("szarus", 5)));
+
+        SimpleLinkedList<Animal> oldAnimals = animals.filterList(new IFilter<Animal>() {
+            @Override
+            public boolean isIncluded(Animal value) {
+                return value.getAge() > 10;
+            }
+        });
+        System.out.println(oldAnimals);
+    }
+
+
+    private static void testSimpleLinkedListOnStrings() {
         SimpleLinkedList<String> simpleLinkedList = new SimpleLinkedList<>();
         System.out.println("size = " + simpleLinkedList.size());
         simpleLinkedList.add("kotek"); // 0
