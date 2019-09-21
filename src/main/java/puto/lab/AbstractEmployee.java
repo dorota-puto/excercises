@@ -11,6 +11,11 @@ public abstract class AbstractEmployee implements Employee {
     }
 
     @Override
+    public String toString() {
+        return getClass().getSimpleName() + " " + name + " is a " + role;
+    }
+
+    @Override
     public String getName() {
         return name;
     }
@@ -35,7 +40,7 @@ public abstract class AbstractEmployee implements Employee {
         if (manager == null) {
             return getRole();
         } else
-            return manager.getResponsibilityChain() + getRole();
+            return manager.getResponsibilityChain() +"/"+ getRole();
     }
 
 }

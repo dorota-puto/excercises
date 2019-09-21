@@ -41,6 +41,19 @@ public class GroupManager extends AbstractEmployee implements Manager {
 
     @Override
     public String work() {
-        return String.format("managing %d/%d workers",workers.size(),workerLimit);
+        StringBuilder builder = new StringBuilder();
+        builder.append(toString()+" currently working on:\n");
+
+        for (Employee worker : workers) {
+            builder.append(worker.work());
+            builder.append("\n");
+        }
+        return builder.toString();
+
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + String.format(" managing %d/%d workers", workers.size(), workerLimit);
     }
 }
