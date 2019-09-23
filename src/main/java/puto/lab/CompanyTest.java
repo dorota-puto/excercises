@@ -11,13 +11,21 @@ public class CompanyTest {
         manager.hire(developer);
         manager.hire(tester);
 
-        Manager manager2 = new GroupManager("Bonawentura", "Senior Lead", 3);
+        Manager manager2 = new GroupManager("Bonawentura", "Senior Lead", 6);
         manager2.hire(new Developer("Zbyszko", "senior II"));
-        manager2.hire(new Developer("Pankracy", "Junior"));
+
+        Developer employee = new Developer("Pankracy", "Junior");
         manager2.hire(new Tester("WolnyPtak", "Regular"));
 
+
+        GroupManager manager3 = new GroupManager("William", "Senior I", 3);
+        manager3.hire(new Developer("Jasko", "junior"));
+        manager2.hire(manager3);
         manager.hire(manager2);
+        manager2.hire(employee);
         manager.hire(new Tester("Janka", "Associate"));
+
+        System.out.println(employee.getResponsibilityChain());
 
         System.out.println(manager.work());
     }

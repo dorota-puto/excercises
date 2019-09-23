@@ -19,7 +19,6 @@ public class GroupManager extends AbstractEmployee implements Manager {
         return workers.size() < workerLimit;
     }
 
-
     @Override
     public Boolean hire(Employee employee) {
         if (canHire()) {
@@ -42,14 +41,30 @@ public class GroupManager extends AbstractEmployee implements Manager {
     @Override
     public String work() {
         StringBuilder builder = new StringBuilder();
-        builder.append(toString()+" currently working on:\n");
+        builder.append(toString() + " currently working on:\n");
 
         for (Employee worker : workers) {
+            appendSpacing(builder, worker);
             builder.append(worker.work());
-            builder.append("\n");
+            appendNewLineIfMissing(builder);
         }
         return builder.toString();
+    }
 
+    private void appendNewLineIfMissing(StringBuilder builder) {
+        if (builder.lastIndexOf("\n") != builder.length() - 1) {
+            builder.append("\n");
+        }
+    }
+
+    private void appendSpacing(StringBuilder builder, Employee worker) {
+
+        String responsibilityChain = worker.getResponsibilityChain();
+        int count = responsibilityChain.length() - responsibilityChain.replace("/", "").length();
+        for (int i = 0; i < count-1; i++) {
+            builder.append("    ");
+        }
+        builder.append("|---");
     }
 
     @Override
