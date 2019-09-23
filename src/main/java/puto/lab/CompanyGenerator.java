@@ -31,7 +31,10 @@ public class CompanyGenerator {
 
     public void hireEmployees(Manager manager, int h) {
         if (h <= 1) {
-            manager.hire(generateWorker());
+            while(manager.canHire()) {
+                manager.hire(generateWorker());
+            }
+            return;
         }
         while (manager.canHire()) {
             boolean hireManager = new Random().nextBoolean();
@@ -48,7 +51,7 @@ public class CompanyGenerator {
     public static void main(String[] args) {
         CompanyGenerator companyGenerator = new CompanyGenerator();
         Manager ceo = companyGenerator.generateManager();
-        companyGenerator.hireEmployees(ceo,4);
+        companyGenerator.hireEmployees(ceo,100);
         System.out.println(ceo.work());
     }
 }
