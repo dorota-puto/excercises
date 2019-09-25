@@ -1,5 +1,6 @@
 package puto.company;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,9 +8,16 @@ public class GroupManager extends AbstractEmployee implements Manager {
 
     private List<Employee> workers = new ArrayList<>();
     private int workerLimit;
+    private static final BigDecimal DEFAULT_MANAGER_SALARY = new BigDecimal(10000);
+
 
     public GroupManager(String name, String role, int workerLimit) {
-        super(name, role);
+        super(name, role, DEFAULT_MANAGER_SALARY);
+        this.workerLimit = workerLimit;
+    }
+
+    public GroupManager(String name, String role, int workerLimit, BigDecimal salary) {
+        super(name, role, salary);
         this.workerLimit = workerLimit;
     }
 
@@ -60,7 +68,7 @@ public class GroupManager extends AbstractEmployee implements Manager {
 
         String responsibilityChain = worker.getResponsibilityChain();
         int count = responsibilityChain.length() - responsibilityChain.replace("/", "").length();
-        for (int i = 0; i < count-1; i++) {
+        for (int i = 0; i < count - 1; i++) {
             builder.append("    ");
         }
         builder.append("|---");

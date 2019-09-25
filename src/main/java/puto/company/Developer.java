@@ -1,8 +1,14 @@
 package puto.company;
 
+import java.math.BigDecimal;
+
 public class Developer extends AbstractEmployee {
     public Developer(String name, String role) {
         super(name, role);
+    }
+
+    public Developer(String name, String role, BigDecimal salary){
+        super(name, role, salary);
     }
 
     @Override
@@ -14,4 +20,5 @@ public class Developer extends AbstractEmployee {
     public String toString() {
         return super.toString()+ " and writes good code";
     }
+
 }

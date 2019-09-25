@@ -51,7 +51,7 @@ public class CompanyGenerator {
     public static void main(String[] args) {
         CompanyGenerator companyGenerator = new CompanyGenerator();
         Manager ceo = companyGenerator.generateManager();
-        companyGenerator.hireEmployees(ceo,100);
+        companyGenerator.hireEmployees(ceo,50);
         System.out.println(ceo.work());
     }
 }

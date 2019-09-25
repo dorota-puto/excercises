@@ -1,5 +1,7 @@
 package puto.company;
 
+import java.math.BigDecimal;
+
 public interface Employee {
     String getName();
 
@@ -12,4 +14,6 @@ public interface Employee {
     String getResponsibilityChain();
 
     String work();
+
+    BigDecimal getSalary();
 }
