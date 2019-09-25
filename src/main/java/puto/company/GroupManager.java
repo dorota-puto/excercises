@@ -2,6 +2,7 @@ package puto.company;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class GroupManager extends AbstractEmployee implements Manager {
@@ -77,5 +78,10 @@ public class GroupManager extends AbstractEmployee implements Manager {
     @Override
     public String toString() {
         return super.toString() + String.format(" managing %d/%d workers", workers.size(), workerLimit);
+    }
+
+    @Override
+    public Iterator<Employee> iterator() {
+        return workers.iterator();
     }
 }
