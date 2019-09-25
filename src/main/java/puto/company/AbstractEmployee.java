@@ -1,4 +1,4 @@
-package puto.lab;
+package puto.company;
 
 public abstract class AbstractEmployee implements Employee {
     private String name;

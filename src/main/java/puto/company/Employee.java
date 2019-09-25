@@ -1,4 +1,4 @@
-package puto.lab;
+package puto.company;
 
 public interface Employee {
     String getName();

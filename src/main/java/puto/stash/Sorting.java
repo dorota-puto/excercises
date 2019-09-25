@@ -1,4 +1,4 @@
-package puto;
+package puto.stash;
 
 public class Sorting {
     public void sort(int[] a) {

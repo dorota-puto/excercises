@@ -1,4 +1,4 @@
-package puto;
+package puto.stash;
 
 import java.util.ArrayList;
 

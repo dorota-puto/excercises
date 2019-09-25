@@ -1,4 +1,4 @@
-package puto.lab;
+package puto.company;
 
 public class CompanyTest {
     public static void main(String[] args) {

@@ -1,6 +1,7 @@
 package puto;
 
 import org.testng.annotations.Test;
+import puto.stash.Max;
 
 import static org.testng.Assert.*;
 

@@ -1,4 +1,4 @@
-package puto.lab;
+package puto.company;
 
 import java.util.Random;
 

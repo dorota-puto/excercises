@@ -1,4 +1,4 @@
-package puto.lab;
+package puto.company;
 
 public class Tester extends AbstractEmployee {
     public Tester(String name, String role) {

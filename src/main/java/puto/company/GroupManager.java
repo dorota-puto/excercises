@@ -1,6 +1,5 @@
-package puto.lab;
+package puto.company;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 

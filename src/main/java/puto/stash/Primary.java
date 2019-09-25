@@ -1,4 +1,4 @@
-package puto;
+package puto.stash;
 
 public class Primary {
     public boolean isPrimaryNumber (int a) {

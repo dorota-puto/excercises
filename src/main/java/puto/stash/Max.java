@@ -1,4 +1,4 @@
-package puto;
+package puto.stash;
 
 public class Max {
     public int calculateMax(int[] a) {
