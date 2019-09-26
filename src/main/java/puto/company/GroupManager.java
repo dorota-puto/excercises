@@ -1,5 +1,7 @@
 package puto.company;
 
+import puto.company.hireStrategy.HireStrategy;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -8,23 +10,23 @@ import java.util.List;
 public class GroupManager extends AbstractEmployee implements Manager {
 
     private List<Employee> workers = new ArrayList<>();
-    private int workerLimit;
+    private HireStrategy hireStrategy;
     private static final BigDecimal DEFAULT_MANAGER_SALARY = new BigDecimal(10000);
 
 
-    public GroupManager(String name, String role, int workerLimit) {
+    public GroupManager(String name, String role, HireStrategy hireStrategy) {
         super(name, role, DEFAULT_MANAGER_SALARY);
-        this.workerLimit = workerLimit;
+      this.hireStrategy=hireStrategy;
     }
 
-    public GroupManager(String name, String role, int workerLimit, BigDecimal salary) {
+    public GroupManager(String name, String role, HireStrategy hireStrategy, BigDecimal salary) {
         super(name, role, salary);
-        this.workerLimit = workerLimit;
+        this.hireStrategy=hireStrategy;
     }
 
     @Override
     public Boolean canHire() {
-        return workers.size() < workerLimit;
+        return hireStrategy.canHire(this);
     }
 
     @Override
@@ -77,7 +79,7 @@ public class GroupManager extends AbstractEmployee implements Manager {
 
     @Override
     public String toString() {
-        return super.toString() + String.format(" managing %d/%d workers", workers.size(), workerLimit);
+        return super.toString() + String.format(" managing %d workers", workers.size());
     }
 
     @Override
