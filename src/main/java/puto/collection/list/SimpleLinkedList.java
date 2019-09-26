@@ -2,7 +2,9 @@ package puto.collection.list;
 
 import puto.collection.filters.IFilter;
 
-public class SimpleLinkedList<T> {
+import java.util.Iterator;
+
+public class SimpleLinkedList<T> implements Iterable<T> {
     private Node<T> head;
     private Node<T> tail;
 
@@ -107,6 +109,12 @@ public class SimpleLinkedList<T> {
             counter++;
         }
         return -1;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+
+        return new SimpleLinkedListIterator<>(head) ;
     }
 }
 
