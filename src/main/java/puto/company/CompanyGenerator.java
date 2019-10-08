@@ -1,5 +1,7 @@
 package puto.company;
 
+import puto.company.hireStrategy.TeamSizeHireStrategy;
+
 import java.util.Random;
 
 public class CompanyGenerator {
@@ -26,7 +28,7 @@ public class CompanyGenerator {
     }
 
     public Manager generateManager() {
-        return new GroupManager(generateName(), generateRole(), new Random().nextInt(4) + 1);
+        return new GroupManager(generateName(), generateRole(), new TeamSizeHireStrategy(new Random().nextInt(4) + 1));
     }
 
     public void hireEmployees(Manager manager, int h) {

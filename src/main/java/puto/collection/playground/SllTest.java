@@ -1,16 +1,45 @@
 package puto.collection.playground;
 
+import org.apache.commons.lang3.builder.CompareToBuilder;
 import puto.collection.filters.IFilter;
 import puto.collection.filters.MinimumLengthFilter;
 import puto.collection.list.SimpleLinkedList;
 import puto.collection.model.Animal;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+import static java.util.Comparator.comparing;
+
 public class SllTest {
     public static void main(String[] args) {
         //testSimpleLinkedListOnStrings();
-        testSimpleLinkedListOnAnimals();
+      //  testSimpleLinkedListOnAnimals();
+        testSimpleLinkedListSorting();
     }
+    private static void testSimpleLinkedListSorting() {
+        List<Animal> animals = new ArrayList<>();
+        animals.add(new Animal("burek", 99));
+        animals.add(new Animal("ciapek", 9));
+        animals.add(new Animal("pusia", 24));
+        animals.add(new Animal("lessi", 3));
+        animals.add(new Animal("szarus", 5));
+        animals.add(new Animal("azor", 24));
 
+        Collections.sort(animals);
+        System.out.println(animals);
+        animals.sort(new Comparator<Animal>() {
+            @Override
+            public int compare(Animal o1, Animal o2) {
+                return new CompareToBuilder()
+                        .append(o1.getName().length(), o2.getName().length())
+                        .toComparison();
+            }
+        });
+        System.out.println(animals);
+    }
     private static void testSimpleLinkedListOnAnimals() {
         SimpleLinkedList<Animal> animals = new SimpleLinkedList<>();
         animals.add(new Animal("burek", 99));
