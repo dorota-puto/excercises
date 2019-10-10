@@ -17,9 +17,15 @@ public class AirbnbFlatDataReader {
         List<AirbnbFlat> result = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line = br.readLine();
+            int counter = 0;
             while ((line = br.readLine()) != null) {
-                result.add(parser.parse(line));
+                AirbnbFlat x = parser.parse(line);
+                if (x != null) {
+                    result.add(x);
+                } else counter++;
             }
+            System.out.println("not processed: "+counter);
+            System.out.println("processed: "+result.size());
         } catch (IOException e) {
             e.printStackTrace();
         }
