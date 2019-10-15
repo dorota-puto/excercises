@@ -1,8 +1,8 @@
-package puto.airbnb.model;
+package puto.airbnb.dto;
 
 import java.math.BigDecimal;
 
-public class AirbnbFlat {
+public class AirbnbFlatDto {
 
     private Integer id;
     private String flatName;

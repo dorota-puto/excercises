@@ -1,7 +1,6 @@
 package puto.airbnb.service;
 
-import puto.airbnb.model.AirbnbFlat;
-import puto.airbnb.model.Column;
+import puto.airbnb.dto.AirbnbFlatDto;
 
 import java.math.BigDecimal;
 
@@ -25,12 +24,12 @@ public class AirbnbFlatParser {
         return copy.toString();
     }
 
-    public AirbnbFlat parse(String line) {
+    public AirbnbFlatDto parse(String line) {
         String preprocessedLine = null;
         try {
             preprocessedLine = removeUnwantedSeparators(line);
             String[] columns = preprocessedLine.split(";");
-            AirbnbFlat airbnbFlat = new AirbnbFlat();
+            AirbnbFlatDto airbnbFlat = new AirbnbFlatDto();
 
             airbnbFlat.setId(Integer.parseInt(columns[ID.getId()]));
             airbnbFlat.setFlatName(columns[FLAT_NAME.getId()]);
