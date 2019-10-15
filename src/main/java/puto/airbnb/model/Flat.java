@@ -37,7 +37,7 @@ public class Flat {
     public void setNeighbourhood(Neighbourhood neighbourhood) {
         this.neighbourhood = neighbourhood;
     }
-    
+
     public Integer getId() {
         return id;
     }
@@ -87,4 +87,4 @@ public class Flat {
     }
 }
 
-}
+

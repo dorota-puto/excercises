@@ -9,14 +9,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class AirbnbFlatParserTest {
     @Test
-    public void AirbnbFlatParserTest(){
-      //given
-        AirbnbFlatParser airbnbFlatParser= new AirbnbFlatParser();
-      //  String line="2539;Clean & quiet apt home by the park;2787;John;Brooklyn;Kensington;40.64749;-73.97237;Private room;149;1;9;2018-10-19;0.21;6;365";
-        String line=  "50447;Lovely Apt & Garden;  Legal;  Best Area; Amenities;9744;Laurie;Brooklyn;South Slope;40.6693;-73.98804;Entire home/apt;135;5;151;2019-06-22;1.43;3;162";
-      //when
-       AirbnbFlatDto flat= airbnbFlatParser.parse(line);
-      //then
+    public void AirbnbFlatParserTest() {
+        //given
+        AirbnbFlatParser airbnbFlatParser = new AirbnbFlatParser();
+        String line = "2539;Clean & quiet apt home by the park;2787;John;Brooklyn;Kensington;40.64749;-73.97237;Private room;149;1;9;2018-10-19;0.21;6;365";
+        //when
+        AirbnbFlatDto flat = airbnbFlatParser.parse(line);
+        //then
         assertThat(flat.getId()).isEqualTo(2539);
         assertThat(flat.getFlatName()).isEqualTo("Clean & quiet apt home by the park");
         assertThat(flat.getHostId()).isEqualTo(2787);
