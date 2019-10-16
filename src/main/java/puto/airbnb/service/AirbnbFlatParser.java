@@ -1,6 +1,10 @@
 package puto.airbnb.service;
 
 import puto.airbnb.dto.AirbnbFlatDto;
+import puto.airbnb.model.Flat;
+import puto.airbnb.model.Host;
+import puto.airbnb.model.Neighbourhood;
+import puto.airbnb.model.RoomType;
 
 import java.math.BigDecimal;
 
@@ -24,20 +28,25 @@ public class AirbnbFlatParser {
         return copy.toString();
     }
 
-    public AirbnbFlatDto parse(String line) {
+    public Flat parse(String line) {
         String preprocessedLine = null;
         try {
             preprocessedLine = removeUnwantedSeparators(line);
             String[] columns = preprocessedLine.split(";");
-            AirbnbFlatDto airbnbFlat = new AirbnbFlatDto();
+            Flat airbnbFlat = new Flat();
 
             airbnbFlat.setId(Integer.parseInt(columns[ID.getId()]));
             airbnbFlat.setFlatName(columns[FLAT_NAME.getId()]);
-            airbnbFlat.setHostId(Integer.parseInt(columns[HOST_ID.getId()]));
-            airbnbFlat.setHostName(columns[HOST_NAME.getId()]);
-            airbnbFlat.setNeighbourhoodGroup(columns[NEIGHBOURHOOD_GROUP.getId()]);
-            airbnbFlat.setGetNeighbourhood(columns[GET_NEIGHBOURHOOD.getId()]);
-            airbnbFlat.setRoomType(columns[ROOM_TYPE.getId()]);
+
+            Host host = new Host(Integer.parseInt(columns[HOST_ID.getId()]), columns[HOST_NAME.getId()]);
+            airbnbFlat.setHost(host);
+
+            Neighbourhood neighbourhood = new Neighbourhood(columns[NEIGHBOURHOOD_GROUP.getId()], columns[GET_NEIGHBOURHOOD.getId()]);
+            airbnbFlat.setNeighbourhood(neighbourhood);
+
+            RoomType roomType = RoomType.createFromName(columns[ROOM_TYPE.getId()]);
+            airbnbFlat.setRoomType(roomType);
+
             airbnbFlat.setPrice(new BigDecimal(columns[PRICE.getId()]));
             airbnbFlat.setMinimumNights(Integer.parseInt(columns[MINIMUM_NIGHTS.getId()]));
             airbnbFlat.setNumberOfReviews(Integer.parseInt(columns[NUMBER_OF_REVIEWS.getId()]));
@@ -45,7 +54,7 @@ public class AirbnbFlatParser {
 
             return airbnbFlat;
         } catch (Exception e) {
-           // System.err.println("unable to parse: " + preprocessedLine);
+            // System.err.println("unable to parse: " + preprocessedLine);
             return null;
         }
 

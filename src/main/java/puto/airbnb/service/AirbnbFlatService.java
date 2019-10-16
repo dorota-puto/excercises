@@ -15,7 +15,6 @@ public class AirbnbFlatService {
                 Integer previousNumber = numberOfFlatsByOwners.get(flat.getHostId());
                 numberOfFlatsByOwners.put(flat.getHostId(), previousNumber + 1);
             }
-
         }
         return numberOfFlatsByOwners;
     }

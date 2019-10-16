@@ -15,6 +15,7 @@ public class Host {
     public Integer getHostId() {
         return hostId;
     }
+
     public String getHostName() {
         return hostName;
     }
@@ -31,5 +32,10 @@ public class Host {
     @Override
     public int hashCode() {
         return Objects.hash(getHostId(), getHostName());
+    }
+
+    @Override
+    public String toString() {
+        return "host id = " + hostId + " host name= " + hostName;
     }
 }
