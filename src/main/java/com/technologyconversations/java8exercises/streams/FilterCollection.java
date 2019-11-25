@@ -2,6 +2,7 @@ package com.technologyconversations.java8exercises.streams;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
@@ -21,8 +22,9 @@ public class FilterCollection {
     }
 
     public static List<String> transform(List<String> collection) {
-        // TODO: implement me
-        return null;
+        return collection.stream()
+                .filter(value -> value.length() < 4)
+                .collect(Collectors.toList());
     }
 
 }

@@ -15,9 +15,10 @@ public class Sum {
         return total;
     }
 
-    public static int calculate(List<Integer> people) {
-        // TODO: implement me
-        return -1;
+    public static int calculate(List<Integer> numbers) {
+     return numbers.stream()
+             .reduce(Integer::sum)
+             .orElse(0);
     }
 
 }

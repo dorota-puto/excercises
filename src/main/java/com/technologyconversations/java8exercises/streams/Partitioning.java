@@ -1,6 +1,8 @@
 package com.technologyconversations.java8exercises.streams;
 
 import java.util.*;
+import java.util.stream.Collectors;
+
 import static java.util.stream.Collectors.*;
 
 public class Partitioning {
@@ -19,8 +21,8 @@ public class Partitioning {
     }
 
     public static Map<Boolean, List<Person>> partitionAdults(List<Person> people) {
-        // TODO: implement me
-        return null;
-    }
 
+        return people.stream()
+                .collect(Collectors.partitioningBy(person -> person.getAge() > 18));
+    }
 }

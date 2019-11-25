@@ -1,7 +1,10 @@
 package com.technologyconversations.java8exercises.streams;
 
 import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
 
 public class Kids {
@@ -17,8 +20,11 @@ public class Kids {
     }
 
     public static Set<String> getKidNames(List<Person> people) {
-        // TODO: implement me
-        return null;
+
+        return people.stream()
+                .filter(person -> person.getAge() < 18)
+                .map(Person::getName)
+                .collect(Collectors.toSet());
     }
 
 }

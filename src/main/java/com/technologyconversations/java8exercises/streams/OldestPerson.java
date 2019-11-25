@@ -2,6 +2,7 @@ package com.technologyconversations.java8exercises.streams;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class OldestPerson {
 
@@ -16,8 +17,9 @@ public class OldestPerson {
     }
 
     public static Person getOldestPerson(List<Person> people) {
-        // TODO: implement me
-        return null;
+        return people.stream()
+                .max(Comparator.comparing(Person::getAge))
+                .orElseThrow(() -> new RuntimeException("you foul!"));
     }
 
 }
