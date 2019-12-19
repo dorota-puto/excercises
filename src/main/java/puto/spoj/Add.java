@@ -3,47 +3,50 @@ package puto.spoj;
 public class Add {
 
     public static String add(String a, String b) {
-        byte[] aa = a.getBytes();
-        for(int i=0; i<aa.length; i++){
-            aa[i]-=((byte)'0');
-        }
-
-        byte[] bb = b.getBytes();
-        for(int i=0; i<bb.length; i++){
-            bb[i]-=((byte)'0');
-        }
-
-        int n = aa.length;
-        int m = bb.length;
-        byte[] cc;
-        byte[] dd;
-        if (n > m) {
-            cc = new byte[n];
-            System.arraycopy(bb, 0, cc, n - m, m);
-            dd = aa;
+        String shorter;
+        String longer;
+        if (a.length() > b.length()) {
+            shorter = b;
+            longer = a;
         } else {
-            cc = new byte[m];
-            System.arraycopy(aa, 0, cc, m - n, n);
-            dd = bb;
+            shorter = a;
+            longer = b;
         }
+
+        byte[] longerDigits = asDigits(longer);
+        byte[] shorterDigits = expand(asDigits(shorter), longerDigits.length);
+        int length = shorterDigits.length;
 
         StringBuilder builder = new StringBuilder();
 
         int i = 1;
-        int length = cc.length;
         while (i <= length) {
-            int sum =cc[length - i] + dd[length - i];
+            int sum = shorterDigits[length - i] + longerDigits[length - i];
 
-            if (sum >= 10 && i<length) {
+            if (sum >= 10 && i < length) {
                 builder.append(sum % 10);
-                cc[length - i - 1] = (byte) (cc[length - i - 1]+ 1);
+                shorterDigits[length - i - 1] = (byte) (shorterDigits[length - i - 1] + 1);
             } else {
-                builder.append(sum);
+                String reversedSum = new StringBuilder("" + sum).reverse().toString();
+                builder.append(reversedSum);
             }
             i++;
         }
         return builder.reverse().toString();
+    }
 
+    private static byte[] expand(byte[] shorterDigits, int newSize) {
+        byte[] expanded = new byte[newSize];
+        System.arraycopy(shorterDigits, 0, expanded, newSize - shorterDigits.length, shorterDigits.length);
+        return expanded;
+    }
+
+    private static byte[] asDigits(String str) {
+        byte[] digits = str.getBytes();
+        for (int i = 0; i < digits.length; i++) {
+            digits[i] -= ((byte) '0');
+        }
+        return digits;
     }
 
     public static void main(String[] args) {

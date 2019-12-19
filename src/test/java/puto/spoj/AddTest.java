@@ -46,11 +46,11 @@ public class AddTest {
     @Test
     public void testAdd4() {
         //given
-        String first = "2";
-        String second = "9";
+        String first = "92";
+        String second = "99";
         //when
         String result =add(first, second);
-        String expected="11";
+        String expected="191";
         //then
         assertThat(result).isEqualTo(expected);
     }
@@ -65,5 +65,18 @@ public class AddTest {
         //then
         assertThat(result).isEqualTo(expected);
     }
+
+    @Test
+    public void testAdd7() {
+        //given
+        String first = "9";
+        String second = "8";
+        //when
+        String result =add(first, second);
+        String expected="17";
+        //then
+        assertThat(result).isEqualTo(expected);
+    }
+
 
 }
