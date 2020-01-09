@@ -18,12 +18,11 @@ public class Compare {
                     break;
                 }
             }
-            if(!found)
+            if (!found)
                 temp.add(item1);
         }
         return temp;
     }
-
     public static void main(String[] args) {
         List<Integer> first = new ArrayList<>(Arrays.asList(3, 8, 5, 7, 9));
         List<Integer> second = new ArrayList<>(Arrays.asList(5, 2, 1, 4, 8));
